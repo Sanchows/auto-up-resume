@@ -1,11 +1,8 @@
 import logging
-import traceback
 
 import requests
 
 import settings
-from logger import configure_logging
-from telegram import send_message
 
 log = logging.getLogger(__name__)
 
@@ -33,18 +30,3 @@ def batch_update() -> requests.Response:
 def run():
     log.info("Running")
     batch_update()
-
-
-if __name__ == "__main__":
-    configure_logging(level=settings.LOGGING_LOG_LEVEL)
-
-    try:
-        log.info("Starting app")
-        run()
-
-    except KeyboardInterrupt:
-        pass
-    except Exception as e:
-        log.exception(e)
-        send_message(chat_id=int(settings.Envs.TELEGRAM_LOGGER_CHAT_ID), text=traceback.format_exc())
-    log.info("Closing app")
