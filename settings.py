@@ -22,18 +22,18 @@ def getenv(key: str, default: T = None, assert_not_none: bool = True) -> str | T
 
 @dataclass(frozen=True, slots=True)
 class Environment:
-    LOCAL = "local"
-    PROD = "production"
+    @dataclass(frozen=True, slots=True)
+    class Config:
+        # if env variable LOGGING_LOG_LEVEL not set, set default logging level
+        default_logging_level: int
 
-
-ENVIRONMENT_LOGLEVEL_MAP = {
-    Environment.LOCAL: logging.DEBUG,
-    Environment.PROD: logging.INFO,
-}
+    LOCAL = Config(default_logging_level=logging.DEBUG)
+    PRODUCTION = Config(default_logging_level=logging.INFO)
 
 
 class Envs:
     ENVIRONMENT: str = getenv("ENVIRONMENT", Environment.LOCAL)
+    LOGGING_LOG_LEVEL: str | None = getenv("LOGGING_LOG_LEVEL", assert_not_none=False)
     COOKIES_HHTOKEN: str = getenv("COOKIES_HHTOKEN")
     COOKIES_HHUID: str = getenv("COOKIES_HHUID")
     COOKIES_XSRF: str = getenv("COOKIES_XSRF")
@@ -41,11 +41,13 @@ class Envs:
     TELEGRAM_LOGGER_CHAT_ID: str = getenv("TELEGRAM_LOGGER_CHAT_ID")
 
 
-assert Envs.ENVIRONMENT in ENVIRONMENT_LOGLEVEL_MAP, (
-    f"Invalid value ({Envs.ENVIRONMENT}) of the environment variable 'ENVIRONMENT'."
-    f"Available values: {[*ENVIRONMENT_LOGLEVEL_MAP.keys()]}"
-)
-LOGGING_LOG_LEVEL = ENVIRONMENT_LOGLEVEL_MAP.get(Envs.ENVIRONMENT)
+CURRENT_ENVIRONMENT: Environment.Config = getattr(Environment, Envs.ENVIRONMENT.upper())
+
+if Envs.LOGGING_LOG_LEVEL is None:
+    LOGGING_LOG_LEVEL = CURRENT_ENVIRONMENT.default_logging_level
+else:
+    LOGGING_LOG_LEVEL = int(Envs.LOGGING_LOG_LEVEL)
+
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
 BATCH_UPDATE_URL = "https://rabota.by/shards/resume/batch_update"
