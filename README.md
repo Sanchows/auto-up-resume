@@ -14,3 +14,7 @@
    ```shell
    python .
    ```
+   or if you are into a parent directory:
+   ```shell
+   python auto-up-resume
+   ```
