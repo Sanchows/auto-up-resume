@@ -10,7 +10,7 @@ log = logging.getLogger(__name__)
 def batch_update() -> requests.Response:
     log.info("Sending batch update request")
     response = requests.post(
-        url="https://rabota.by/shards/resume/batch_update",
+        url=settings.BATCH_UPDATE_URL,
         headers={
             "User-Agent": settings.USER_AGENT,
             "Accept": "application/json",

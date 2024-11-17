@@ -48,3 +48,4 @@ assert Envs.ENVIRONMENT in ENVIRONMENT_LOGLEVEL_MAP, (
 LOGGING_LOG_LEVEL = ENVIRONMENT_LOGLEVEL_MAP.get(Envs.ENVIRONMENT)
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
+BATCH_UPDATE_URL = "https://rabota.by/shards/resume/batch_update"
