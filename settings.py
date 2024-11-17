@@ -8,7 +8,8 @@ try:
 except ImportError:
     pass
 else:
-    dotenv.load_dotenv("./.env")
+    from pathlib import Path
+    dotenv.load_dotenv(Path(__file__).parent / ".env")
 
 T = TypeVar("T")
 
