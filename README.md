@@ -33,8 +33,8 @@ Example for Google Chrome:`Dev tools -> Application -> Cookies -> https://rabota
    ```shell
    python auto-up-resume
    ```
-### Production run (Docker)
-#### NOTE: This method runs the app in CRON. CRON expression is declared in the Dockerfile; now it's 51 * * * * (every hour in 51 minutes).
+- ### Run in the Docker
+   #### NOTE: This method runs the app in CRON. CRON expression is declared in the Dockerfile; now it's 51 * * * * (every hour in 51 minutes).
 1. Clone the repository and follow to the folder:
     ```shell
     git clone https://github.com/Sanchows/auto-up-resume.git
