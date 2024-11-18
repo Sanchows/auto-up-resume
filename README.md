@@ -50,5 +50,5 @@ Example for Google Chrome:`Dev tools -> Application -> Cookies -> https://rabota
    docker run --name auto-up-resume auto-up-resume
    ```
 ## TODO
-- #### docker compose
+- #### docker compose for production running
 - #### Telegram bot to run remotely
