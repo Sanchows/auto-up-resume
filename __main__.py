@@ -17,5 +17,6 @@ except KeyboardInterrupt:
     pass
 except Exception as e:
     log.exception(e)
-    send_message(chat_id=int(settings.Envs.TELEGRAM_LOGGER_CHAT_ID), text=traceback.format_exc())
+    if settings.IS_ENABLED_TELEGRAM_LOGGER:
+        send_message(chat_id=int(settings.Envs.TELEGRAM_LOGGER_CHAT_ID), text=traceback.format_exc())
 log.info("Closing app")

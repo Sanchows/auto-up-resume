@@ -9,6 +9,7 @@ except ImportError:
     pass
 else:
     from pathlib import Path
+
     dotenv.load_dotenv(Path(__file__).parent / ".env")
 
 T = TypeVar("T")
@@ -38,8 +39,8 @@ class Envs:
     COOKIES_HHTOKEN: str = getenv("COOKIES_HHTOKEN")
     COOKIES_HHUID: str = getenv("COOKIES_HHUID")
     COOKIES_XSRF: str = getenv("COOKIES_XSRF")
-    TELEGRAM_LOGGER_BOT_TOKEN: str = getenv("TELEGRAM_LOGGER_BOT_TOKEN")
-    TELEGRAM_LOGGER_CHAT_ID: str = getenv("TELEGRAM_LOGGER_CHAT_ID")
+    TELEGRAM_LOGGER_BOT_TOKEN: str | None = getenv("TELEGRAM_LOGGER_BOT_TOKEN", assert_not_none=False)
+    TELEGRAM_LOGGER_CHAT_ID: str | None = getenv("TELEGRAM_LOGGER_CHAT_ID", assert_not_none=False)
 
 
 CURRENT_ENVIRONMENT: Environment.Config = getattr(Environment, Envs.ENVIRONMENT.upper())
@@ -52,3 +53,4 @@ else:
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
 BATCH_UPDATE_URL = "https://rabota.by/shards/resume/batch_update"
+IS_ENABLED_TELEGRAM_LOGGER = all((Envs.TELEGRAM_LOGGER_BOT_TOKEN, Envs.TELEGRAM_LOGGER_CHAT_ID))
