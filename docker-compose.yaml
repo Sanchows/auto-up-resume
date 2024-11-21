@@ -4,5 +4,3 @@ services:
     restart: always
     build:
       context: .
-    env_file:
-      - .env
