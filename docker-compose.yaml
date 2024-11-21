@@ -1,0 +1,8 @@
+services:
+  main:
+    container_name: auto-up-resume-main
+    restart: always
+    build:
+      context: .
+    env_file:
+      - .env

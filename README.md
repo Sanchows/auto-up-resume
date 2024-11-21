@@ -21,10 +21,11 @@ Example for Google Chrome:`Dev tools -> Application -> Cookies -> https://rabota
     git clone https://github.com/Sanchows/auto-up-resume.git
     cd auto-up-resume
     ```
-2. Install dependencies (it is recommended to use it in a virtual environment) from the `requirements.local.txt` file:
+2. Install dependencies (it is recommended to use it in a virtual environment) from the `requirements.txt` file:
     ```shell
-    pip install -r requirements.local.txt
+    pip install -r requirements.txt
     ```
+   _***If you want to load environment variables from file automatically you may install python-dotenv: `pip install python-dotenv`**_
 3. Run:
    ```shell
    python .
@@ -33,22 +34,17 @@ Example for Google Chrome:`Dev tools -> Application -> Cookies -> https://rabota
    ```shell
    python auto-up-resume
    ```
-- ### Run in the Docker
+- ### Run in the docker-compose
    #### NOTE: This method runs the app in CRON. CRON expression is declared in the Dockerfile; now it's 51 * * * * (every hour in 51 minutes).
 1. Clone the repository and follow to the folder:
     ```shell
     git clone https://github.com/Sanchows/auto-up-resume.git
     cd auto-up-resume
     ```
-2. Install docker.
-3. Build a docker image:
+2. Install docker and docker compose.
+3. Run:
    ```shell
-   docker build . --tag=auto-up-resume
-   ```
-4. Run a docker container:
-   ```shell
-   docker run --name auto-up-resume auto-up-resume
+   docker compose up
    ```
 ## TODO
-- #### docker compose for production running
 - #### Telegram bot to run remotely
