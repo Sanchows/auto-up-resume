@@ -49,5 +49,6 @@ Example for Google Chrome:`Dev tools -> Application -> Cookies -> https://rabota
    ```shell
    docker compose up
    ```
+
 ## TODO
 - #### Telegram bot to run remotely
