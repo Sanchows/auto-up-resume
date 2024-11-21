@@ -25,7 +25,10 @@ Example for Google Chrome:`Dev tools -> Application -> Cookies -> https://rabota
     ```shell
     pip install -r requirements.txt
     ```
-   _***If you want to load environment variables from file automatically you may install python-dotenv: `pip install python-dotenv`**_
+    _***If you want to load environment variables from file automatically you may install python-dotenv:**_
+    ```shell
+    pip install python-dotenv
+    ```
 3. Run:
    ```shell
    python .
