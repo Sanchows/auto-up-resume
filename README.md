@@ -1,6 +1,6 @@
 ## About
-### Problem
-#### `rabota.by` (it's another domain of `hh.ru`) gives an opportunity to up your resumes once every 4 hours.
+### What is the problem?
+#### `rabota.by` (it's another domain of `hh.ru`) gives an opportunity to up your resumes once every 4 hours. To do this, go to the website (or mobile application) and click the appropriate button. It is inconvenient and takes a lot of time.
 ### Solving
 #### This app just up all your resumes automatically.
 ### Instruments
