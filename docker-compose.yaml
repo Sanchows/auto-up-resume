@@ -1,7 +1,7 @@
 
 services:
   main:
-    container_name: auto-up-resume-main
+    container_name: auto-up-resume
     restart: always
     build:
       context: .
