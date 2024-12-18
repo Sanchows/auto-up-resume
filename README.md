@@ -11,10 +11,15 @@
 - #### Error logging. All exceptions will be sent to Telegram user
 - #### Docker
 - #### CRON
-## How to
+## How to use
 **WARNING: You need to fill the `.env` file: uncomment and set required env variables with value `NEED TO SET`.**
+- There are 2 ways to auth:
+  1) Throughout the cookies (you need to fill `COOKIES_HHTOKEN`, `COOKIES_HHUID`, `COOKIES_XSRF`)
+  2) Throughout the login/password (you need to fill `USERNAME`, `PASSWORD`)
 - Values of variables `COOKIES_HHTOKEN`, `COOKIES_HHUID`, `COOKIES_XSRF` are set in cookies after log in. 
-Example for Google Chrome:`Dev tools -> Application -> Cookies -> https://rabota.by -> type "rabota.by" in the filter -> find hhtoken, hhuid, _xsrf` 
+Example for Google Chrome:`Dev tools -> Application -> Cookies -> https://rabota.by -> type "rabota.by" in the filter -> find hhtoken, hhuid, _xsrf`
+- If you'll fill `USERNAME`, `PASSWORD` variables, `COOKIES_HHTOKEN`, `COOKIES_HHUID`, `COOKIES_XSRF` variables are not required
+- `USERNAME` - is an email or a phone number of your account, `PASSWORD` - password of your account. 
 - ### Run locally
 1. Clone the repository and follow to the folder:
     ```shell
