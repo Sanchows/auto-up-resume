@@ -3,36 +3,37 @@ import logging
 import httpx
 
 import settings
+from auth.interfaces import AuthStrategy
+from auth.services import choose_auth_strategy
 
 log = logging.getLogger(__name__)
 
 
-async def batch_update() -> httpx.Response:
-    log.info("Sending batch update request")
-    async with httpx.AsyncClient() as client:
+async def batch_update(auth_strategy: AuthStrategy) -> httpx.Response:
+    hh_session = await auth_strategy.get_hh_session()
+    async with httpx.AsyncClient(timeout=10) as client:
+        log.debug("Sending batch update request...")
         response = await client.post(
             url=settings.BATCH_UPDATE_URL,
             headers={
                 "User-Agent": settings.USER_AGENT,
                 "Accept": "application/json",
-                "X-Xsrftoken": settings.Envs.COOKIES_XSRF,
+                "X-Xsrftoken": hh_session.cookies.xsrf,
             },
             cookies={
-                "hhtoken": settings.Envs.COOKIES_HHTOKEN,
-                "hhuid": settings.Envs.COOKIES_HHUID,
+                "hhtoken": hh_session.cookies.hhtoken,
+                "hhuid": hh_session.cookies.hhuid,
             },
-            timeout=10,
         )
     log.info(
         "Batch update response: %r. Status code: %s",
         response,
         response.status_code,
     )
-    log.debug("Batch update response text: %s", response.text)
-    log.debug("Batch update response json: %s", response.json())
+
     return response
 
 
 async def run():
-    log.info("Running")
-    await batch_update()
+    auth_strategy = choose_auth_strategy()
+    await batch_update(auth_strategy=auth_strategy)
