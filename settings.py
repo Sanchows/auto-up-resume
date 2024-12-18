@@ -36,9 +36,13 @@ class Environment:
 class Envs:
     ENVIRONMENT: str = getenv("ENVIRONMENT", Environment.LOCAL)
     LOGGING_LOG_LEVEL: str | None = getenv("LOGGING_LOG_LEVEL", assert_not_none=False)
-    COOKIES_HHTOKEN: str = getenv("COOKIES_HHTOKEN")
-    COOKIES_HHUID: str = getenv("COOKIES_HHUID")
-    COOKIES_XSRF: str = getenv("COOKIES_XSRF")
+
+    COOKIES_HHTOKEN: str | None = getenv("COOKIES_HHTOKEN", assert_not_none=False)
+    COOKIES_HHUID: str | None = getenv("COOKIES_HHUID", assert_not_none=False)
+    COOKIES_XSRF: str | None = getenv("COOKIES_XSRF", assert_not_none=False)
+    USERNAME: str | None = getenv("USERNAME", assert_not_none=False)
+    PASSWORD: str | None = getenv("PASSWORD", assert_not_none=False)
+
     TELEGRAM_LOGGER_BOT_TOKEN: str | None = getenv("TELEGRAM_LOGGER_BOT_TOKEN", assert_not_none=False)
     TELEGRAM_LOGGER_CHAT_ID: str | None = getenv("TELEGRAM_LOGGER_CHAT_ID", assert_not_none=False)
 
@@ -53,4 +57,5 @@ else:
 
 USER_AGENT = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Safari/537.36"
 BATCH_UPDATE_URL = "https://rabota.by/shards/resume/batch_update"
+LOGIN_URL = "https://rabota.by/account/login"
 IS_ENABLED_TELEGRAM_LOGGER = all((Envs.TELEGRAM_LOGGER_BOT_TOKEN, Envs.TELEGRAM_LOGGER_CHAT_ID))

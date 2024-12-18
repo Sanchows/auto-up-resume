@@ -1,0 +1,2 @@
+class AuthStrategyError(Exception):
+    pass
