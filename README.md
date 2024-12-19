@@ -12,7 +12,7 @@
 - #### Docker
 - #### CRON
 ## How to use
-**WARNING: Before all, you need to create and fill the `.env` file:**
+**WARNING: First of all, you need to create and fill the `.env` file:**
    ```shell
    touch .env
    ```
