@@ -6,7 +6,7 @@ RUN apt update && apt install -y \
 WORKDIR /app
 COPY requirements.txt ./
 RUN python -m pip install --upgrade pip && pip install -r requirements.txt
-COPY *.py .env pyproject.toml cron-entrypoint.sh ./
+COPY . ./
 RUN chmod +x /app/cron-entrypoint.sh
 RUN echo "51 * * * * /app/cron-entrypoint.sh >> /var/log/cron.log 2>&1" > /etc/cron.d/my-cron-job
 RUN chmod 0644 /etc/cron.d/my-cron-job
