@@ -12,7 +12,11 @@
 - #### Docker
 - #### CRON
 ## How to use
-**WARNING: You need to fill the `.env` file: uncomment and set required env variables with value `NEED TO SET`.**
+**WARNING: Before all, you need to create and fill the `.env` file:**
+   ```shell
+   touch .env
+   ```
+   **Then copy all from `.env.template` and paste. Then uncomment and set the necessary env variables with value `NEED TO SET` following the comments.**
 - There are 2 ways to auth:
   1) Throughout the cookies (you need to fill `COOKIES_HHTOKEN`, `COOKIES_HHUID`, `COOKIES_XSRF`)
   2) Throughout the login/password (you need to fill `USERNAME`, `PASSWORD`)
