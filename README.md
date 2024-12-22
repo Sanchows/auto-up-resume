@@ -18,8 +18,8 @@
    ```
    **Then copy all from `.env.template` and paste. Then uncomment and set the necessary env variables with value `NEED TO SET` following the comments.**
 - There are 2 ways to auth:
-  1) Throughout the cookies (you need to fill `COOKIES_HHTOKEN`, `COOKIES_HHUID`, `COOKIES_XSRF`)
-  2) Throughout the login/password (you need to fill `USERNAME`, `PASSWORD`)
+  1) Through  the cookies (you need to fill `COOKIES_HHTOKEN`, `COOKIES_HHUID`, `COOKIES_XSRF`)
+  2) Through the login/password (you need to fill `USERNAME`, `PASSWORD`)
 - Values of variables `COOKIES_HHTOKEN`, `COOKIES_HHUID`, `COOKIES_XSRF` are set in cookies after log in. 
 Example for Google Chrome:`Dev tools -> Application -> Cookies -> https://rabota.by -> type "rabota.by" in the filter -> find hhtoken, hhuid, _xsrf`
 - If you'll fill `USERNAME`, `PASSWORD` variables, `COOKIES_HHTOKEN`, `COOKIES_HHUID`, `COOKIES_XSRF` variables are not required
